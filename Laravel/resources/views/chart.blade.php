@@ -1,0 +1,6 @@
+@extends('layouts.site')
+@section('title', 'Tanösvények diagramja')
+@push('head')<script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>@endpush
+@section('content')
+<main><header class="page-head"><div class="shell"><div class="eyebrow">Adatok a táj mögött</div><h1>Az ország ösvényei, számokban.</h1><p>Hasonlítsd össze a nemzeti parkok tanösvényeinek és településeinek számát.</p></div></header><section class="shell content"><div class="section-head"><div><div class="section-kicker">Nemzeti park igazgatóságok</div><h2>Hol indulj el?</h2></div><p>A diagram a választott tanösvény-adatbázis aktuális adataiból készül.</p></div><div class="chart-tabs" role="group" aria-label="Diagram adatsor"><button class="active" data-chart-mode="trails" type="button">Tanösvények</button><button data-chart-mode="towns" type="button">Települések</button></div><div class="chart-panel"><canvas id="park-chart" aria-label="Tanösvények száma nemzeti parkonként" data-labels="{{ $chartLabels->toJson() }}" data-trails="{{ $trailCounts->toJson() }}" data-towns="{{ $townCounts->toJson() }}"></canvas></div></section></main>
+@endsection
