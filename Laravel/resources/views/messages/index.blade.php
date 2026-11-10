@@ -1,0 +1,5 @@
+@extends('layouts.site')
+@section('title', 'Üzenetek')
+@section('content')
+<main><header class="page-head"><div class="shell"><div class="eyebrow">Közösségi postaláda</div><h1>Kapcsolati üzenetek</h1><p>A kapcsolati űrlapon érkezett üzenetek, a legfrissebb elöl.</p></div></header><section class="shell content">@if($messages->count())<div class="messages-list">@foreach($messages as $message)<article class="message-item"><div class="message-top"><div><h3>{{ $message->subject }}</h3><p class="message-byline">{{ $message->name }} · <a href="mailto:{{ $message->email }}">{{ $message->email }}</a></p></div><time datetime="{{ $message->created_at->toIso8601String() }}">{{ $message->created_at->format('Y. m. d. H:i') }}</time></div><div class="message-copy">{{ $message->message }}</div></article>@endforeach</div><div class="pagination">{{ $messages->links('pagination::simple-tailwind') }}</div>@else<div class="empty-state">Még nem érkezett üzenet. <a class="text-link" href="{{ route('contact.create') }}">Írj te elsőként →</a></div>@endif</section></main>
+@endsection
